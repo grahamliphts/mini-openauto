@@ -1,0 +1,50 @@
+- Preparing required package
+
+$ sudo apt-get update
+$ sudo apt-get install -y libboost-all-dev libusb-1.0.0-dev libssl-dev cmake libprotobuf-dev protobuf-c-compiler protobuf-compiler
+$ sudo apt-get install -y libqt5multimedia5 libqt5multimedia5-plugins libqt5multimediawidgets5 qtmultimedia5-dev libqt5bluetooth5 libqt5bluetooth5-bin qtconnectivity5-dev pulseaudio librtaudio-dev librtaudio5a
+
+- Build aasdk
+cd ~
+Fork abraha2d's aasdk to your account
+$ git clone https://github.com/USERNAME/aasdk.git
+$ mkdir aasdk_build
+$ cd aasdk_build
+$ cmake -DCMAKE_BUILD_TYPE=Release ../aasdk
+$ make
+
+- Install some packages to compile ilclient:
+
+$ sudo apt-get install -y libraspberrypi-doc libraspberrypi-dev
+$ cd /opt/vc/src/hello_pi/libs/ilclient
+$ make
+
+- Install package to compile openauto
+
+$ sudo apt-get install -y libtag1-dev libblkid-dev
+
+- Build Openauto
+
+Fork https://github.com/f1xpl/openauto to your account
+
+$ cd ~
+$ git clone https://github.com/USERNAME/openauto.git
+$ cd openauto
+$ git remote add abraha2d https://github.com/abraha2d/openauto.git
+$ git fetch abraha2d/development
+$ git log
+make a note for hash numbers. find with messages: 
+ first: Fix onAVChannelStopIndication compile error
+ second: Fix ping timer error
+ 
+$ git checkout development
+$ git cherry-pick YOUR_FIRST_HASH
+$ git cherry-pick YOUR_SECOND_HASH
+$ git push origin development
+
+$ mkdir openauto_build
+$ cd openauto_build
+$ cmake -DCMAKE_BUILD_TYPE=Release -DRPI3_BUILD=TRUE -DAASDK_INCLUDE_DIRS="/home/pi/aasdk/include" -DAASDK_LIBRARIES="/home/pi/aasdk/lib/libaasdk.so" -DAASDK_PROTO_INCLUDE_DIRS="/home/pi/aasdk_build" -DAASDK_PROTO_LIBRARIES="/home/pi/aasdk/lib/libaasdk_proto.so" ../openauto
+$ make
+$ cd openauto/bin
+$ sudo ./autoapp

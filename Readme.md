@@ -45,3 +45,8 @@ Copyrights (c) 2018 f1x.studio (Michal Szwaj)
 
 ### Remarks
 **This software is not certified by Google Inc. It is created for R&D purposes and may not work as expected by the original authors. Do not use while driving. You use this software at your own risk.**
+
+- Fixes for ping timer error and onAVChannelStopIndication compiled error pulled from [abraha2d](https://github.com/abraha2d/openauto)
+- Install guide pulled from [ugifractal](https://gist.github.com/ugifractal/fad134377e71086ec34a4f11e594c5f1)
+
+

@@ -48,6 +48,7 @@ public:
     void onAVChannelStartIndication(const aasdk::proto::messages::AVChannelStartIndication& indication) override;
     void onAVMediaWithTimestampIndication(aasdk::messenger::Timestamp::ValueType timestamp, const aasdk::common::DataConstBuffer& buffer) override;
     void onAVMediaIndication(const aasdk::common::DataConstBuffer& buffer) override;
+    void onAVChannelStopIndication(const aasdk::proto::messages::AVChannelStopIndication& indication) override;
     void onVideoFocusRequest(const aasdk::proto::messages::VideoFocusRequest& request) override;
     void onChannelError(const aasdk::error::Error& e) override;
 
